@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Queen Iris!</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+
+</head>
+<body class="min-h-screen flex items-center justify-center p-4 overflow-hidden select-none">
+
+  <div id="intro-stage" class="max-w-md w-full bg-white/80 backdrop-blur-md rounded-3xl p-8 shadow-xl text-center border-4 border-white transform transition-all duration-700 scale-100 opacity-100">
+    <div class="text-6xl mb-4 animate-float">👑</div>
+    
+    <h1 class="heading-font text-3xl font-bold text-cyan-800 mb-2">
+      Happy Birthday, <br>
+      <span class="text-cyan-600">Queen Iris Angeline Crisostomo!</span>
+    </h1>
+    
+    <div class="my-6 min-h-[80px] flex items-center justify-center">
+      <p id="typed-text" class="text-lg text-gray-700 font-medium italic transition-opacity duration-500 opacity-100">
+        Loading something sweet for you...
+      </p>
+    </div>
+
+    <div class="w-full bg-cyan-100 h-2 rounded-full overflow-hidden">
+      <div id="intro-progress" class="bg-cyan-400 h-full w-0 transition-all duration-300 ease-out"></div>
+    </div>
+  </div>
+
+
+  <div id="game-stage" class="hidden max-w-lg w-full bg-white/90 backdrop-blur-md rounded-3xl p-6 shadow-xl text-center border-4 border-white relative">
+    <h2 class="heading-font text-2xl font-bold text-cyan-800 mb-1">👑 Iris's Birthday Quest 👑</h2>
+    <p class="text-sm text-gray-600 mb-4">Catch <span class="font-bold text-cyan-600">10 falling birthday treats</span> to unlock your final reward!</p>
+    
+    <div class="flex justify-center gap-4 mb-4 text-lg font-bold text-gray-700">
+      <div>Score: <span id="score" class="text-cyan-600">0</span> / 10</div>
+    </div>
+
+    <div id="game-area" class="relative w-full h-80 bg-cyan-50/50 rounded-2xl border-2 border-dashed border-cyan-200 overflow-hidden cursor-crosshair">
+      <div id="player" class="absolute bottom-2 left-1/2 -translate-x-1/2 text-4xl transition-all duration-700 ease-out pointer-events-none">
+        🎂
+      </div>
+    </div>
+    
+    <p class="text-xs text-gray-400 mt-3">Click/Tap inside the box or move your mouse to guide the birthday cake!</p>
+  </div>
+
+
+  <div id="reward-stage" class="hidden max-w-2xl w-full bg-white/95 backdrop-blur-md rounded-3xl p-8 shadow-2xl text-center border-4 border-white max-h-[90vh] overflow-y-auto">
+    <div class="text-5xl mb-2 animate-bounce">🎉</div>
+    <h2 class="heading-font text-3xl font-bold text-cyan-800 mb-2">Quest Complete!</h2>
+    <p class="text-gray-600 mb-6">As promised, here is the ultimate treasure vault of our best memories. 😂</p>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      
+      <div class="bg-cyan-50 p-3 rounded-2xl border border-cyan-100 shadow-sm transform hover:rotate-1 transition-transform">
+        <div class="bg-gray-300 w-full h-48 rounded-xl flex items-center justify-center text-gray-500 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400" alt="Embarrassing 1" class="w-full h-full object-cover">
+        </div>
+        <p class="text-sm font-semibold text-cyan-800 mt-2">The time we completely lost it 💀</p>
+      </div>
+
+      <div class="bg-cyan-50 p-3 rounded-2xl border border-cyan-100 shadow-sm transform hover:-1 transition-transform">
+        <div class="bg-gray-300 w-full h-48 rounded-xl flex items-center justify-center text-gray-500 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400" alt="Embarrassing 2" class="w-full h-full object-cover">
+        </div>
+        <p class="text-sm font-semibold text-cyan-800 mt-2">Mid-sneeze or mid-laugh? Nobody knows.</p>
+      </div>
+
+      <div class="bg-cyan-50 p-3 rounded-2xl border border-cyan-100 shadow-sm transform hover:rotate-2 transition-transform">
+        <div class="bg-gray-300 w-full h-48 rounded-xl flex items-center justify-center text-gray-500 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400" alt="Embarrassing 3" class="w-full h-full object-cover">
+        </div>
+        <p class="text-sm font-semibold text-cyan-800 mt-2">Pure chaotic energy right here.</p>
+      </div>
+
+      <div class="bg-cyan-50 p-3 rounded-2xl border border-cyan-100 shadow-sm transform hover:-2 transition-transform">
+        <div class="bg-gray-300 w-full h-48 rounded-xl flex items-center justify-center text-gray-500 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400" alt="Embarrassing 4" class="w-full h-full object-cover">
+        </div>
+        <p class="text-sm font-semibold text-cyan-800 mt-2">I still can't believe you let me take this.</p>
+      </div>
+
+    </div>
+
+    <footer class="mt-8 pt-4 border-t border-cyan-100 text-cyan-700 font-medium">
+      Have the most amazing day, Iris! You're stuck with me forever! 💖
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
