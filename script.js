@@ -13,7 +13,7 @@ const messages = [
     "Yung halos wala na tayong ligo kakabantay sa New Sibonga.",
     "Sa mga late-night libangan natin sa Bongbong dati na halos pagalitan na tayo ng parents natin. 😅",
     "Yung mga times na halos ayaw na natin umuwi sa mga bahay natin kasi masaya tayo sa isa't isa.",
-    "Yung foodtrip natin sa gilid na kalsada. Kahit walang lamesa at wala masyadong pera, goods na.",
+    "Yung foodtrip natin sa gilid ng kalsada. Kahit walang lamesa at wala masyadong pera, goods na.",
     "We may not always be together na ngayon physically, but I want you to know that you are always in my heart. 💖",
     "AYMISHU AND ILABYUUUUUU! 🥰",
     "WHY AM I CRYING HABANG GINAGAWA TO?!! 😭",
