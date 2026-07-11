@@ -36,6 +36,6 @@ Check out the deployed site here: **[Click Here!](https://iris-birthday.onrender
 │   └── cover.jpg              # Open Graph social sharing preview image
 ├── index.html                 # Main layout and DOM structures
 ├── styles.css                 # Custom scrollbars, font bindings & animation layers
-├── script.js                 # Core game engine & stage state handlers
+├── script.js                  # Core game engine & stage state handlers
 ├── favicon.svg                # Theme-matching crown icon asset
 └── README.md                  # Project documentation
