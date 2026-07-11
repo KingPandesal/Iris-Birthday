@@ -160,3 +160,126 @@ function endGame() {
     document.body.style.backgroundColor = '#C4F2F7';
     }, 500);
 }
+
+// --- STAGE 4: THE FINAL BOSS (MODAL OPEN/CLOSE) ---
+document.addEventListener('DOMContentLoaded', () => {
+    const goodbyeBtn = document.getElementById('goodbye-btn');
+    const videoModal = document.getElementById('video-modal');
+    const videoCard = document.getElementById('video-card');
+    const finalVideo = document.getElementById('final-video');
+    const closeVideoBtn = document.getElementById('close-video-btn');
+
+    if (goodbyeBtn && videoModal) {
+        // OPEN MODAL ACTION
+        goodbyeBtn.addEventListener('click', () => {
+            // Remove hidden structure class
+            videoModal.classList.remove('hidden');
+            
+            // Allow browser paint cycle before triggering CSS animations
+            setTimeout(() => {
+                videoModal.classList.remove('opacity-0', 'pointer-events-none');
+                videoModal.classList.add('opacity-100');
+                
+                if (videoCard) {
+                    videoCard.classList.remove('scale-95');
+                    videoCard.classList.add('scale-100');
+                }
+                
+                // Attempt automatic playback (Will catch if browser requires manual tap interaction)
+                finalVideo.play().catch(err => {
+                    console.log("Autoplay paused by browser policy. Awaiting Queen Iris's input.");
+                });
+            }, 20);
+        });
+    }
+
+    if (closeVideoBtn && videoModal) {
+        // CLOSE MODAL ACTION
+        closeVideoBtn.addEventListener('click', () => {
+            // Pause the video immediately so the audio doesn't keep playing in the background
+            finalVideo.pause();
+            
+            // Trigger exit fade and shrink animations
+            videoModal.classList.remove('opacity-100');
+            videoModal.classList.add('opacity-0', 'pointer-events-none');
+            
+            if (videoCard) {
+                videoCard.classList.remove('scale-100');
+                videoCard.classList.add('scale-95');
+            }
+
+            // Hide structure completely after transition completes
+            setTimeout(() => {
+                videoModal.classList.add('hidden');
+            }, 300);
+        });
+    }
+});
+
+// --- LIGHTBOX CLICK-TO-ZOOM IN LOGIC ---
+document.addEventListener('DOMContentLoaded', () => {
+    const lightboxModal = document.getElementById('lightbox-modal');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const lightboxClose = document.getElementById('lightbox-close');
+
+    // Select all image elements inside your reward grid cards
+    const gridCards = document.querySelectorAll('#reward-stage .grid > div');
+
+    gridCards.forEach(card => {
+        const img = card.querySelector('img');
+        const caption = card.querySelector('p');
+
+        if (img) {
+            // Make individual cards indicate they are interactable
+            card.classList.add('cursor-zoom-in');
+
+            card.addEventListener('click', () => {
+                // Set modal image src and text context
+                lightboxImg.src = img.src;
+                lightboxCaption.innerText = caption ? caption.innerText : "";
+
+                // Show modal structure 
+                lightboxModal.classList.remove('hidden');
+                
+                // Allow browser drawing cycle to trigger CSS layout state before transition
+                setTimeout(() => {
+                    lightboxModal.classList.remove('pointer-events-none', 'opacity-0');
+                    lightboxModal.classList.add('opacity-100');
+                    lightboxImg.classList.remove('scale-95');
+                    lightboxImg.classList.add('scale-100');
+                }, 20);
+            });
+        }
+    });
+
+    // Close function layout
+    function closeLightbox() {
+        lightboxModal.classList.remove('opacity-100');
+        lightboxModal.classList.add('opacity-0', 'pointer-events-none');
+        lightboxImg.classList.remove('scale-100');
+        lightboxImg.classList.add('scale-95');
+
+        // Hide entirely from view after transition completes
+        setTimeout(() => {
+            lightboxModal.classList.add('hidden');
+            lightboxImg.src = "";
+        }, 300);
+    }
+
+    // Dismiss light box upon hitting close trigger or background click bounds
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightboxModal.addEventListener('click', (e) => {
+        // Only close if user clicks the backdrop or image wrapper element boundaries
+        if (e.target === lightboxModal || e.target.parentElement === lightboxModal) {
+            closeLightbox();
+        }
+    });
+
+    // Accessibility fallback escape key trigger
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !lightboxModal.classList.contains('hidden')) {
+            closeLightbox();
+        }
+    });
+});
